@@ -183,7 +183,7 @@ export class Board {
                 if (this.active_piece.dist_to_floor === 0) {
                     this.t_lock += 1;
                     this.t_maxlock += 1;
-                    if (this.t_lock == hnd.NF_AUTOLOCK || this.t_maxlock == hnd.NF_MAXLOCK) {
+                    if (this.t_lock >= hnd.NF_AUTOLOCK || this.t_maxlock >= hnd.NF_MAXLOCK) {
                         if (this.apply_active_piece()) {
                             this.state = STATE_WAIT_AUTOLOCK;
                             this.wait_time = hnd.NF_AUTOLOCK_DELAY;
@@ -195,7 +195,7 @@ export class Board {
                 }
                 else {
                     this.t_gravity += 1;
-                    if (this.t_gravity == hnd.NF_GRAVITY) {
+                    if (this.t_gravity >= hnd.NF_GRAVITY) {
                         this.move_active_piece(0, -1);
                         return STEP_RESULT_GRAVITY;
                         this.t_gravity = 0;
@@ -205,7 +205,7 @@ export class Board {
             }
             default: {
                 if ((this.wait_time -= 1) === 0) {
-                    if (this.state === STATE_WAIT_AUTOLOCK) {
+                    if (this.state >= STATE_WAIT_AUTOLOCK) {
                         if (this.check_full_lines()) {
                             this.empty_full_lines();
                             this.state = STATE_WAIT;
@@ -226,7 +226,7 @@ export class Board {
                         }
                     }
                 }
-                else if (this.wait_time === hnd.NF_REMOVE_CLEARED_LINES && this.state === STATE_WAIT) {
+                else if (this.wait_time >= hnd.NF_REMOVE_CLEARED_LINES && this.state === STATE_WAIT) {
                     this.remove_full_lines();
                 }
             }

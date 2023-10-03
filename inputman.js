@@ -83,16 +83,18 @@ export function init() {
 function _onkeydown(e) {
     if (e.repeat === true) return;
     if (listening_input > -1) {
-        let old = Object.entries(keymap).find(([k,v]) => v === listening_input + 1);
+        let old = Object.entries(keymap).find(([k,v]) => v === listening_input + 1)[0];
         delete keymap[old];
         inputmap_buttons[listening_input].innerText = e.code;
         keymap[e.code] = listening_input + 1;
         listening_input = -1;
     }
     else {
+        if ((document.activeElement ?? document.body) !== document.body) return;
         let cd = keymap[e.code] ?? EV_IGNORE;
         if (!_reading_all && (cd >= EV_IGNORE_ALL)) return;
         inputbuf.add(cd);
+        e.preventDefault();
     }
 }
 function _onkeyup(e) {
