@@ -226,7 +226,7 @@ export class Board {
                         }
                     }
                 }
-                else if (this.wait_time >= hnd.NF_REMOVE_CLEARED_LINES && this.state === STATE_WAIT) {
+                else if (this.wait_time <= hnd.NF_REMOVE_CLEARED_LINES && this.state === STATE_WAIT) {
                     this.remove_full_lines();
                 }
             }
