@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    background-color: #222;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.board_svg {
+    margin: 10px;
+    width: 600px;
+    height: 600px;
+}
+
+.board_bg_blur {
+    fill: #1117;
+}
+
+.board_bg {
+    fill: #171717;
+}
+
+#board_grid_pat > path {
+    stroke: #222;
+}
+
+.board_bottom_line {
+    stroke: #3af7;
+    stroke-width: 2px;
+}
+
+.active_piece {
+    filter: brightness(150%);
+}
+
+.next_queue {
+    transform: translateX(105px) scale(0.5);
+}
+.hold_piece {
+    transform: translateX(-25px) scale(0.5);
+}
+
+@keyframes clear_line {
+    10% {
+        x: 0px;
+        width: 100px;
+    }
+    100% {
+        x: 100px;
+        width: 0px;
+    }
+}
+
+.clear_eff.show {
+    animation: 0.2s ease-in clear_line;
+}
+
+
+#inputmap {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#inputmap td {
+    color: #ccc;
+}
+
+.inputmap_item {
+    width: 100px;
+    background-color: #555;
+    color: #ccc;
+}

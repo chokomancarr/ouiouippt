@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <svg class="board_svg" viewbox="-30 -30 250 250">
+            <defs>
+                <pattern id="board_grid_pat" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <path d="M10 0 L 0 0 L 0 10 L 10 10 z" />
+                </pattern>
+            </defs>
+            <rect class="board_bg_blur" x="-30" y="-30" width="170" height="240"></rect>
+            <rect class="board_bg" x="0" y="-4" width="100" height="204" />
+            <rect class="board_bg_lines" x="0" y="-4" width="100" height="204" fill="url(#board_grid_pat)" />
+            <line class="board_bottom_line" x1="0" y1="201" x2="100" y2="201" />
+            
+            <g class="board_lines"></g>
+            <g class="shadow_piece"></g>
+            <g class="active_piece"></g>
+            <g class="next_queue"></g>
+            <g class="hold_piece"></g>
+            
+            <rect class="clear_eff" x="0" y="0" height="10" fill="white" />
+            <rect class="clear_eff" x="0" y="0" height="10" fill="white" />
+            <rect class="clear_eff" x="0" y="0" height="10" fill="white" />
+            <rect class="clear_eff" x="0" y="0" height="10" fill="white" />
+        </svg>
+        
+        <div id="inputmap">
+            <table>
+                <tr>
+                    <td>Move Left</td><td><button type="button" class="inputmap_item">?</button></td>
+                </tr><tr>
+                    <td>Move Right</td><td><button type="button" class="inputmap_item">?</button></td>
+                </tr><tr>
+                    <td>Rotate Left</td><td><button type="button" class="inputmap_item">?</button></td>
+                </tr><tr>
+                    <td>Rotate Right</td><td><button type="button" class="inputmap_item">?</button></td>
+                </tr><tr>
+                    <td>Soft Drop</td><td><button type="button" class="inputmap_item">?</button></td>
+                </tr><tr>
+                    <td>Hard Drop</td><td><button type="button" class="inputmap_item">?</button></td>
+                </tr><tr>
+                    <td>Hold</td><td><button type="button" class="inputmap_item">?</button></td>
+                </tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr>
+                    <td><button type="button" id="inputmap_save">Save</button></td>
+                    <td><button type="button" id="inputmap_reset">Reset</button></td>
+                </tr>
+            </table>
+        </div>
+        
+        <script type="module" src="main.js"></script>
+    </body>
+</html>
